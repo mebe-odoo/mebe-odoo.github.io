@@ -1,0 +1,16 @@
+{
+    "name": "mebe-odoo.github.io",
+    "version": "1.0.0",
+    "description": "TCO exercises repo",
+    "main": "index.js",
+    "repository": "https://github.com/mebe-odoo/mebe-odoo.github.io.git",
+    "author": "Mehdi Bendali Hacine <bendali.hacine.m@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "vuepress": "^1.9.7"
+    },
+    "scripts": {
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
+    }
+}
