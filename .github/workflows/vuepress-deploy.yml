@@ -15,4 +15,3 @@ jobs:
                   TARGET_BRANCH: main
                   BUILD_SCRIPT: yarn && yarn docs:build
                   BUILD_DIR: docs/.vuepress/dist
-                  CNAME: https://mebe-odoo.github.io
