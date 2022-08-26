@@ -12,6 +12,6 @@ jobs:
               env:
                   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
                   TARGET_REPO: mebe-odoo/mebe-odoo.github.io
-                  TARGET_BRANCH: main
+                  TARGET_BRANCH: gh-pages
                   BUILD_SCRIPT: yarn && yarn docs:build
                   BUILD_DIR: docs/.vuepress/dist
