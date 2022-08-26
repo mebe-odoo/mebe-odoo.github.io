@@ -18,6 +18,10 @@ module.exports = {
                         title: "Realty Management - Part 2",
                         path: "/tco/exercises/realty_management_2.html",
                     },
+                    {
+                        title: "Realty Management - Part 3",
+                        path: "/tco/exercises/realty_management_3.html",
+                    },
                 ],
             },
             {
