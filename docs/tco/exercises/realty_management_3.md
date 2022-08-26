@@ -182,3 +182,36 @@ your report should look like. No need to be as complex, however. Keep it simple.
 </template>
 
 ```
+
+## Make Properties Visible on the Website
+
+The agency wishes to make their properties accessible via the website.
+
+To achieve this, create a new controller with the following route `/properties/<int:property_id>`, the route method should take a `property_id` parameter, that will be used to look-up a Property record through the ORM, then render it in a custom QWEB template.
+The web page should at least render the Property's name and any other information you may think is pertinent.
+
+**Hint:**
+
+```
+< DEFINE A NEW CONTROLLER >
+
+class RealtyController(...):
+
+@route(...)
+def property_view(...)
+    ...
+    return request.render(<TEMPLATE_ID>, qcontext={...})
+
+< DEFINE A NEW QWEB TEMPLATE >
+<template id="<TEMPLATE_ID>">
+    <t t-call="website.layout">
+        <t t-set="pageName" t-value="'homepage'"/>
+        <div id="wrap">
+            ...
+        </div>
+    </t>
+</template>
+
+```
+
+Once the controller and page are set up, add a button on the Property form view that redirects to the route of the controller and allows the users to view the property on the website.
