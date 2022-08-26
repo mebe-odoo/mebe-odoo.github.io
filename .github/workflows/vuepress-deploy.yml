@@ -10,7 +10,7 @@ jobs:
             - name: vuepress-deploy
               uses: jenkey2011/vuepress-deploy@master
               env:
-                  ACCESS_TOKEN: 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
+                  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
                   TARGET_REPO: mebe-odoo/mebe-odoo.github.io
                   TARGET_BRANCH: main
                   BUILD_SCRIPT: yarn && yarn docs:build
