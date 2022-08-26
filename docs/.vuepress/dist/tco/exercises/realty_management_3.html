@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Realty Management - Part 3 | TCO Training</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Static website for sharing technical exercises and tutorials">
+    
+    <link rel="preload" href="/assets/css/0.styles.9825735b.css" as="style"><link rel="preload" href="/assets/js/app.585bece5.js" as="script"><link rel="preload" href="/assets/js/2.2defd20b.js" as="script"><link rel="preload" href="/assets/js/12.abb5994b.js" as="script"><link rel="prefetch" href="/assets/js/10.0df63e15.js"><link rel="prefetch" href="/assets/js/11.e430b17d.js"><link rel="prefetch" href="/assets/js/13.323072f8.js"><link rel="prefetch" href="/assets/js/3.783b9df6.js"><link rel="prefetch" href="/assets/js/4.26f73e91.js"><link rel="prefetch" href="/assets/js/5.5dcec586.js"><link rel="prefetch" href="/assets/js/6.f2a96706.js"><link rel="prefetch" href="/assets/js/7.07f522ed.js"><link rel="prefetch" href="/assets/js/8.551a0261.js"><link rel="prefetch" href="/assets/js/9.3cd64dde.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9825735b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">TCO Training</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">Welcome</a></li><li><section class="sidebar-group depth-0"><a href="/tco/" class="sidebar-heading clickable router-link-active open"><span>Exercises</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/tco/exercises/realty_management.html" class="sidebar-link">Realty Management - Part 1</a></li><li><a href="/tco/exercises/realty_management_2.html" class="sidebar-link">Realty Management - Part 2</a></li><li><a href="/tco/exercises/realty_management_3.html" aria-current="page" class="active sidebar-link">Realty Management - Part 3</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_3.html#new-security-groups" class="sidebar-link">New Security Groups</a></li><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_3.html#only-tenancy-managers-can-validate-tenancies" class="sidebar-link">Only Tenancy Managers can Validate Tenancies</a></li><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_3.html#tenancy-agents-can-only-see-their-own-tenancies" class="sidebar-link">Tenancy Agents can only see their own Tenancies</a></li><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_3.html#define-a-sequence-for-tenancies" class="sidebar-link">Define a Sequence for Tenancies</a></li><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_3.html#new-report-for-tenancies" class="sidebar-link">New Report for Tenancies</a></li></ul></li></ul></section></li><li><a href="/tco/solutions/" class="sidebar-link">Solutions</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="realty-management-part-3"><a href="#realty-management-part-3" class="header-anchor">#</a> Realty Management - Part 3</h1> <p>This is a continuation of <a href="/tco/exercises/realty_management_3.html" aria-current="page" class="router-link-exact-active router-link-active">Realty Management - Part 2</a></p> <p>The realty agency has come back to your company one last time to improve the security of their application:</p> <h2 id="new-security-groups"><a href="#new-security-groups" class="header-anchor">#</a> New Security Groups</h2> <p>To better manage the responsabilities and permissions of their employees, the agency wants to separate their system users
+into three new groups: Property Managers, Tenancy Managers &amp; Tenancy Agents.</p> <p>Property Managers can read, write, create and unlink both Properties &amp; Tenancies
+Tenancy Managers and Tenancy Agents are only able read, write, create and unlink Tenancies.</p> <p>These new groups should be grouped under a new <strong>Realty Management</strong> category.</p> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; CREATE CATEGORY &gt;
+&lt;record id='&lt;CATEGORY_ID&gt;' model='ir.module.category'&gt;
+    &lt;field name='name'&gt;Realty Management&lt;/field&gt;
+        ...
+&lt;/record&gt;
+
+&lt; CREATE GROUPS &gt;
+&lt;record id='&lt;GROUP_1_ID&gt;' model='res.groups'&gt;
+    &lt;field name='name'&gt;Tenancy Managers&lt;/field&gt;
+    &lt;field name='category_id' ref='&lt;MODULE_NAME&gt;.&lt;CATEGORY_ID&gt;' /&gt;
+        ...
+&lt;/record&gt;
+
+&lt;record id='&lt;GROUP_2_ID&gt;' model='res.groups'&gt;
+    &lt;field name='name'&gt;Tenancy Agents&lt;/field&gt;
+    &lt;field name='category_id' ref='&lt;MODULE_NAME&gt;.&lt;CATEGORY_ID&gt;' /&gt;
+        ...
+&lt;/record&gt;
+
+&lt;record id='&lt;GROUP_3_ID&gt;' model='res.groups'&gt;
+    &lt;field name='name'&gt;Property Managers&lt;/field&gt;
+    &lt;field name='category_id' ref='&lt;MODULE_NAME&gt;.&lt;CATEGORY_ID&gt;' /&gt;
+    &lt;field name='implied_ids' ref='...' /&gt;
+        ...
+&lt;/record&gt;
+
+&lt; UPDATE ACCESS RIGHTS &gt;
+Update the ir.model.access.csv file in your security folder to use the correct groups.
+
+</code></pre></div><h2 id="only-tenancy-managers-can-validate-tenancies"><a href="#only-tenancy-managers-can-validate-tenancies" class="header-anchor">#</a> Only Tenancy Managers can Validate Tenancies</h2> <p>The agency wants only Tenancy Managers, and by extension property managers, to be able to validate tenancies.
+To achieve this, define a new view that inherits the base tenancy form view and make the <strong>Validate</strong> button only
+visible to users with the correct group.</p> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; INHERIT THE FORM VIEW &gt;
+&lt;record id='&lt;CUSTOM_ID&gt;' model='ir.ui.view'&gt;
+    ...
+    &lt;field name='inherit_id' ref='&lt;MODULE_NAME&gt;.&lt;INITIAL_FORM_VIEW&gt;' /&gt;
+    &lt;field name='groups_id' eval='[(4, ref(&quot;&lt;MODULE_NAME&gt;.&lt;GROUP_ID&gt;&quot;))]'/&gt;
+    ...
+&lt;/record&gt;
+</code></pre></div><p>It is also recommended to add a check on the python side to make sure Tenancies can only be validated by the correct group. To achieve this, use the following function available on any user record to check their groups:</p> <div class="language- extra-class"><pre class="language-text"><code>from odoo.exceptions import UserError
+...
+if not user.has_group('&lt;MODULE_NAME&gt;.&lt;GROUP_ID&gt;'):
+    raise UserError('...')
+...
+</code></pre></div><h2 id="tenancy-agents-can-only-see-their-own-tenancies"><a href="#tenancy-agents-can-only-see-their-own-tenancies" class="header-anchor">#</a> Tenancy Agents can only see their own Tenancies</h2> <p>To implement further security, the agency wishes to allow Tenancy Agents to only be able to view, write, create and unlink their own tenancies.</p> <p>To achieve this, add a new field on the Tenancy model, where a user can be specified. By default, the value of the field
+should be <code>this.env.user</code>, and only Tenancy Managers can change its value.</p> <p>Once the field has been added, create new record rules to limit the access on the Tenancy Model.</p> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; ADD A NEW FIELD TO THE TENANCY MODEL &gt;
+...
+user_id = fields.Many2one(&quot;res.users&quot;, string=&quot;Agent&quot;, default=lambda self: self.env.user)
+...
+
+&lt; CREATE THE RECORD RULE &gt;
+&lt;record id='&lt;CUSTOM_ID&gt;' model='ir.rule'&gt;
+    &lt;field name='name'&gt;Tenancies: Agents can only manage their own tenancies&lt;/field&gt;
+    &lt;field name='model_id' ref='model_realty_tenancy' /&gt;
+    &lt;field name='domain_force'&gt;[('user_id', '=', user.id)]&lt;/field&gt;
+    &lt;field name='groups' eval='...' /&gt;
+    ...
+        Set then permissions
+    ...
+&lt;/record&gt;
+</code></pre></div><h2 id="define-a-sequence-for-tenancies"><a href="#define-a-sequence-for-tenancies" class="header-anchor">#</a> Define a Sequence for Tenancies</h2> <p>To implement a better, more scalable naming convention for your tenancies, the agency wishes to define a new
+sequence that will be used to name your tenancies automatically.</p> <p>To achieve this, define a new ir.sequence record and use it to initialize the name of your tenancy.</p> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; ADD A NEW SEQUENCE &gt;
+&lt;record id='&lt;CUSTOM_ID&gt;' model='ir.sequence'&gt;
+    &lt;field name='name'&gt;Realty Tenancy&lt;/field&gt;
+    &lt;field name='model_id' ref='model_realty_tenancy' /&gt;
+    &lt;field name='code'&gt;realty.tenancy&lt;/field&gt;
+    &lt;field name='prefix'&gt;TEN/%(year)s/&lt;/field&gt;
+    &lt;field name='padding' eval='...' /&gt;
+    ...
+&lt;/record&gt;
+
+&lt; OVERRIDE THE CREATE METHOD &gt;
+
+@api.model_create_multi
+def create(self, vals_list)
+    ...
+    # the Name field should be readonly, and its value only set once the tenancy is created
+    vals['name'] = self.env.ref('&lt;MODULE_NAME&gt;.&lt;SEQUENCE_ID&gt;').next_by_id()
+    # OR
+    vals['name'] = self.env['ir.sequence'].next_by_code('realty.tenancy')
+    ...
+</code></pre></div><h2 id="new-report-for-tenancies"><a href="#new-report-for-tenancies" class="header-anchor">#</a> New Report for Tenancies</h2> <p>The agency wants to be able to print a document with the details of any given tenancy(ies).
+To achieve this, create a new pdf report for the Tenancies model. The report should display all relevant information
+about the tenancy.</p> <p>If the tenancy is ongoing, the title of the report should be displayed in green.
+If the tenancy is still in draft, the title of the report should be: 'Draft Tenancy' in gray.
+If the tenancy is neither ongoing nor in draft, the title should be displayed in blue.</p> <p>Print whatever information you think is pertinent, including the tenants, rents and dates.</p> <p>You can check the Invoice report defined in <code>odoo/addons/account/views/report_invoice.xml</code> to get an idea of what
+your report should look like. No need to be as complex, however. Keep it simple.</p> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; DEFINE A NEW REPORT ACTION &gt;
+&lt;record id='&lt;CUSTOM_ID&gt;' model='ir.actions.report'&gt;
+    ...
+    &lt;field name='report_name'&gt;&lt;MODULE_NAME&gt;.tenancy_contract&lt;/field&gt;
+    &lt;field name='report_file'&gt;&lt;MODULE_NAME&gt;.tenancy_contract&lt;/field&gt;
+    ...
+&lt;/record&gt;
+
+&lt; DEFINE A NEW QWEB TEMPLATE FOR YOUR REPORT &gt;
+&lt;template id=&quot;tenancy_contract&quot;&gt;
+    &lt;t t-call=&quot;web.html_container&quot;&gt;
+        &lt;t t-foreach=&quot;docs&quot; t-as=&quot;o&quot;&gt;
+            &lt;t t-call=&quot;web.external_layout&quot;&gt;
+                &lt;div class=&quot;page&quot;&gt;
+
+                    Define the architecture of your report.
+
+                    You can use Bootstrap css classes to customize the look &amp; feel.
+                    For example: To change the color of a paragraph, use text-success, text-info and so on.
+
+                &lt;/div&gt;
+            &lt;/t&gt;
+        &lt;/t&gt;
+    &lt;/t&gt;
+&lt;/template&gt;
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/tco/exercises/realty_management_2.html" class="prev">
+        Realty Management - Part 2
+      </a></span> <span class="next"><a href="/tco/solutions/">
+        Solutions
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.585bece5.js" defer></script><script src="/assets/js/2.2defd20b.js" defer></script><script src="/assets/js/12.abb5994b.js" defer></script>
+  </body>
+</html>
