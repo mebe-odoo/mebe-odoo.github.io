@@ -11,6 +11,10 @@ module.exports = {
                 path: "/tco/",
                 children: [
                     {
+                        title: "Awesome School - Part 1",
+                        path: "/tco/exercises/awesome_school.html",
+                    },
+                    {
                         title: "Realty Management - Part 1",
                         path: "/tco/exercises/realty_management.html",
                     },
