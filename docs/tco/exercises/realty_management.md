@@ -19,6 +19,13 @@ As in, the buildings, apartments and houses they need to be able to manage. Prop
 -   Available for Rent: Wheter the property is available for rent (Required)
 -   Is Rented: Whether the property is currently rented. Computed using the following logic: Is there any tenancy active during the current time frame ? (Required)
 
+## Rooms
+
+As in, the rooms that make up the property
+
+-   Name: name of the tenanct (Required)
+-   Surface: The surface of the room, displayed in meters squared (Required)
+
 ## Tenants
 
 As in, the contacts that occupy the property
@@ -33,11 +40,11 @@ As in, the contacts that occupy the property
 
 ## Tenancies
 
-As in, the contracts that bind a tenant and a property over a specified period of time. Tenancies have the following attributes:
+As in, the contracts that bind tenants and a property over a specified period of time. Tenancies have the following attributes:
 
 -   Property: A reference to the property rented (Required)
--   Tenant: A reference to the person renting the property (Required)
--   Contract Name: A computed value that is a combination of noth the property name and the tenant's name
+-   Tenants: A reference to the persons renting the property (Required)
+-   Contract Name: A computed value that is a combination of both the property name and the first tenant's name
 -   Start Date: The date on which the contract starts (Required)
 -   Date End: The date on which the contract ends (Optional)
 -   State: Whether the tenancy is in draft, active, cancelled or terminated (Required). By default should be draft.

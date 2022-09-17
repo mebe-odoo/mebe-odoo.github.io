@@ -6,4 +6,6 @@
 
 ## Realty Management
 
-Coming soon...
+[Realty Management - Part 1](https://github.com/mebe-odoo/tco-realty/tree/part_1/realty_management)
+
+More Coming soon...
