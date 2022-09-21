@@ -8,7 +8,8 @@ To further expand the functionalities of your application, the organization has 
 
 The base fields available on the `res.partner` model are not enough to fill out all the information required for the students.
 
-To amend that, add two new fields on the model: **Date of Birth** and **Place of Birth**.
+To amend that, add three new fields on the model: **Date of Birth** and **Place of Birth**, which are primitive Date & Text fields,
+And an **Is Student** field, which is a boolean that should be computed based on whether a partner is set as a student on any classroom record.
 
 **Hint:**
 
@@ -30,6 +31,31 @@ Class ResPartner(models.Model):
 
 ```
 
+## Show the list of students
+
+There needs to be a way to display the students directly from the Awesome School app. 
+To achieve this, create a new **Window Action** for the **res.partner** model with the appropriate domain,
+that will display only the records where **Is Student** is set to True on the Tree/Form view.
+
+**Hint:**
+
+```
+
+< CREATE A NEW WINDOW ACTION LINKED TO THE PARTNERS AND SET A DOMAIN >
+<record id='<CUSTOM_ID>' model='ir.actions.act_window'>
+    ...
+    <field name='res_model'>...</field>
+    <field name='domain'>...</field>
+    ...
+</record>
+
+< CREATE A NEW MENUITEM LINKED TO THE ACTION THAT SHOULD HAVE THE ROOT MENUITEM AS ITS PARENT >
+
+<menuitem ... />
+
+```
+
+
 ## Study Sessions
 
 The organization wishes to be able to manage study sessions for different classrooms.
@@ -43,7 +69,7 @@ The Classroom should hold a reference to all the study sessions linked to it, an
 view of the Classroom to see all the study sessions or create new ones.
 
 Also, create a new Server Action linked to the Classrooms that allows automatically create a new Study Session linked
-to each Classroom selected
+to each Classroom selected.
 
 **Hint:**
 
