@@ -15,6 +15,14 @@ module.exports = {
                         path: "/tco/exercises/awesome_school.html",
                     },
                     {
+                        title: "Awesome School - Part 2",
+                        path: "/tco/exercises/awesome_school_2.html",
+                    },
+                    {
+                        title: "Awesome School - Part 3",
+                        path: "/tco/exercises/awesome_school_3.html",
+                    },
+                    {
                         title: "Realty Management - Part 1",
                         path: "/tco/exercises/realty_management.html",
                     },

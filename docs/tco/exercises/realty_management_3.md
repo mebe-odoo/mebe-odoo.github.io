@@ -1,6 +1,7 @@
 # Realty Management - Part 3
 
-This is a continuation of [Realty Management - Part 2](./realty_management_3.md)
+Part 1: [Realty Management - Part 1](./realty_management.md)
+Part 2: [Realty Management - Part 2](./realty_management_2.md)
 
 The realty agency has come back to your company one last time to improve the security of their application:
 
