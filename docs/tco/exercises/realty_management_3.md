@@ -7,11 +7,11 @@ The realty agency has come back to your company one last time to improve the sec
 
 ## New Security Groups
 
-To better manage the responsabilities and permissions of their employees, the agency wants to separate their system users
+To better manage the responsibilities and permissions of their employees, the agency wants to separate their system users
 into three new groups: Property Managers, Tenancy Managers & Tenancy Agents.
 
-Property Managers can read, write, create and unlink both Properties & Tenancies
-Tenancy Managers and Tenancy Agents are only able read, write, create and unlink Tenancies.
+Property Managers can read, write, create and unlink both Properties & Tenancies.
+Tenancy Managers and Tenancy Agents are only able to read, write, create and unlink Tenancies.
 
 These new groups should be grouped under a new **Realty Management** category.
 
@@ -49,10 +49,10 @@ Update the ir.model.access.csv file in your security folder to use the correct g
 
 ```
 
-## Only Tenancy Managers can Validate Tenancies
+## Only Tenancy Managers can Confirm Tenancies
 
 The agency wants only Tenancy Managers, and by extension property managers, to be able to validate tenancies.
-To achieve this, define a new view that inherits the base tenancy form view and make the **Validate** button only
+To achieve this, define a new view that inherits the base tenancy form view and make the **Confirm** button only
 visible to users with the correct group.
 
 **Hint:**
@@ -111,7 +111,7 @@ user_id = fields.Many2one("res.users", string="Agent", default=lambda self: self
 To implement a better, more scalable naming convention for your tenancies, the agency wishes to define a new
 sequence that will be used to name your tenancies automatically.
 
-To achieve this, define a new ir.sequence record and use it to initialize the name of your tenancy.
+To achieve this, define a new `ir.sequence` record and use it to initialize the name of your tenancy.
 
 **Hint:**
 
@@ -119,22 +119,21 @@ To achieve this, define a new ir.sequence record and use it to initialize the na
 < ADD A NEW SEQUENCE >
 <record id='<CUSTOM_ID>' model='ir.sequence'>
     <field name='name'>Realty Tenancy</field>
-    <field name='model_id' ref='model_realty_tenancy' />
-    <field name='code'>realty.tenancy</field>
+    <field name='code'>tenancy.sequence</field>
     <field name='prefix'>TEN/%(year)s/</field>
     <field name='padding' eval='...' />
     ...
 </record>
 
-< OVERRIDE THE CREATE METHOD >
+< OVERRIDE THE NAME FIELD. IT SHOULD NOT BE COMPUTED, AND ITS DEFAULT VALUE SHOULD BE '/'>
 
-@api.model_create_multi
-def create(self, vals_list)
+< OVERRIDE THE CONFIRM METHOD >
+
+def action_confirm(self, vals_list)
     ...
-    # the Name field should be readonly, and its value only set once the tenancy is created
-    vals['name'] = self.env.ref('<MODULE_NAME>.<SEQUENCE_ID>').next_by_id()
+    self.name = self.env.ref('<MODULE_NAME>.<SEQUENCE_ID>').next_by_id()
     # OR
-    vals['name'] = self.env['ir.sequence'].next_by_code('realty.tenancy')
+    self.name = self.env['ir.sequence'].next_by_code('realty.tenancy')
     ...
 ```
 

@@ -66,7 +66,7 @@ To do this, create two new **URL Actions**, one for tenancies, the other for pro
 < ADD A BUTTON TO THE FORM VIEWS >
 ...
 <div class="oe_button_box">
-    <button class="btn-primary" type="..." action="..."
+    <button class="oe_stat_button" type="..." name="..."
             icon="fa-link" string="View on Portal"/>
 </div>
 ...
@@ -81,10 +81,10 @@ To do this, create two new **URL Actions**, one for tenancies, the other for pro
 
 ## Tenancy Cancellation
 
-The agency wished to have a new button on the **Form** view of the tenancies. The button should read "Cancel".
-Upon clicking on the button, the tenancy should be cancelled, i.e: its state should change to 'cancelled', however this should only be possible if the tenancy is not Terminated.
+The agency wishes to have a new button on the **Form** view of the tenancies. The button should read "Cancel".
+Upon clicking on the button, the tenancy should be cancelled, i.e: its state should change to 'cancelled', however this should only be possible if the tenancy is neither Terminated nor Draft.
 
-When a tenancy is cancelled, its tenant_ids field whould be emptied.
+When a tenancy is cancelled, its tenant_ids field should be emptied.
 
 **Hint:**
 
