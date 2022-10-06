@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Realty Management - Part 2 | TCO Training</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Static website for sharing technical exercises and tutorials">
+    
+    <link rel="preload" href="/assets/css/0.styles.9825735b.css" as="style"><link rel="preload" href="/assets/js/app.6dc49ec4.js" as="script"><link rel="preload" href="/assets/js/2.2defd20b.js" as="script"><link rel="preload" href="/assets/js/14.a92bc864.js" as="script"><link rel="prefetch" href="/assets/js/10.c7150ebe.js"><link rel="prefetch" href="/assets/js/11.1190ac00.js"><link rel="prefetch" href="/assets/js/12.f8d7e98a.js"><link rel="prefetch" href="/assets/js/13.5e7b55d4.js"><link rel="prefetch" href="/assets/js/15.e90a20bf.js"><link rel="prefetch" href="/assets/js/16.0e2bfddc.js"><link rel="prefetch" href="/assets/js/17.9346c81d.js"><link rel="prefetch" href="/assets/js/3.e04970d5.js"><link rel="prefetch" href="/assets/js/4.26f73e91.js"><link rel="prefetch" href="/assets/js/5.5dcec586.js"><link rel="prefetch" href="/assets/js/6.f2a96706.js"><link rel="prefetch" href="/assets/js/7.2fb8d45f.js"><link rel="prefetch" href="/assets/js/8.7aadc852.js"><link rel="prefetch" href="/assets/js/9.7d5ff36c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9825735b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">TCO Training</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">Welcome</a></li><li><section class="sidebar-group depth-0"><a href="/tco/" class="sidebar-heading clickable router-link-active open"><span>Exercises</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/tco/exercises/awesome_school.html" class="sidebar-link">Awesome School - Part 1</a></li><li><a href="/tco/exercises/awesome_school_2.html" class="sidebar-link">Awesome School - Part 2</a></li><li><a href="/tco/exercises/awesome_school_3.html" class="sidebar-link">Awesome School - Part 3</a></li><li><a href="/tco/exercises/realty_management.html" class="sidebar-link">Realty Management - Part 1</a></li><li><a href="/tco/exercises/realty_management_2.html" aria-current="page" class="active sidebar-link">Realty Management - Part 2</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_2.html#terminating-tenancies" class="sidebar-link">Terminating Tenancies</a></li><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_2.html#separate-views-for-tenancies" class="sidebar-link">Separate Views for Tenancies</a></li><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_2.html#redirect-to-agency-s-portal" class="sidebar-link">Redirect to Agency's portal</a></li><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_2.html#tenancy-cancellation" class="sidebar-link">Tenancy Cancellation</a></li><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_2.html#set-default-tenant-on-tenancy" class="sidebar-link">Set Default Tenant on Tenancy</a></li><li class="sidebar-sub-header"><a href="/tco/exercises/realty_management_2.html#new-report-for-properties" class="sidebar-link">New Report for Properties</a></li></ul></li><li><a href="/tco/exercises/realty_management_3.html" class="sidebar-link">Realty Management - Part 3</a></li></ul></section></li><li><a href="/tco/solutions/" class="sidebar-link">Solutions</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="realty-management-part-2"><a href="#realty-management-part-2" class="header-anchor">#</a> Realty Management - Part 2</h1> <p>This is a continuation of <a href="/tco/exercises/realty_management.html">Realty Management - Part 1</a></p> <p>To further expand the functionalities of your application, the realty agency has come back to your company with the following change requests:</p> <h2 id="terminating-tenancies"><a href="#terminating-tenancies" class="header-anchor">#</a> Terminating Tenancies</h2> <p>They want to be able to terminate a tenancy easily, without having to wait for the system to check every single day.</p> <p>To realize this, create a new <strong>Server Action</strong> bound to the tenancy model, that terminates any tenancy selected from the tree view or opened in a form view.</p> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; CREATE THE SERVER ACTION &gt;
+&lt;record id='&lt;CUSTOM_ID&gt;' model='ir.actions.server'&gt;
+    ...
+    &lt;field name='state'&gt;code&lt;/field&gt;
+    &lt;field name='code'&gt;
+        ...
+    &lt;/field&gt;
+    ...
+&lt;/record&gt;
+
+&lt; THE SERVER ACTION SHOULD CALL A FUNCTION ON THE TENANCY MODEL&gt;
+
+def action_terminate_tenancies(self):
+    ...
+
+</code></pre></div><h2 id="separate-views-for-tenancies"><a href="#separate-views-for-tenancies" class="header-anchor">#</a> Separate Views for Tenancies</h2> <p>The agency wants to have separate views for terminated and draft/ongoing tenancies.</p> <p>To realize this, create a new <strong>Window Action</strong> that displays only terminated tenancies, and edit the initial action created in <a href="/tco/exercises/realty_management.html#tenancies">Realty Management - Part 1</a> to display only tenancies that are not terminated.</p> <p>Add the new action under the Tenancies parent menu.</p> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; CREATE THE WINDOW ACTION &gt;
+&lt;record id='&lt;CUSTOM_ID&gt;' model='ir.actions.act_window'&gt;
+    ...
+    &lt;field name='domain'&gt;[('state' '=', ...)]&lt;/field&gt;
+    ...
+&lt;/record&gt;
+</code></pre></div><p>No need to create new views. You can use the same view with two different actions.</p> <h2 id="redirect-to-agency-s-portal"><a href="#redirect-to-agency-s-portal" class="header-anchor">#</a> Redirect to Agency's portal</h2> <p>The agency has its own website that can be found at the following url: <code>https://portal.fake-agency.com/</code>
+They want to redirect the user to a page on their portal when click on a button from the <strong>Form</strong> view.
+To do this, create two new <strong>URL Actions</strong>, one for tenancies, the other for properties, that redirects the user to the following urls:</p> <ul><li>Tenancies: <strong>&lt;PORTAL_URL&gt;</strong>/tenancies/<strong>&lt;TENANCY_ID&gt;</strong></li> <li>Properties: <strong>&lt;PORTAL_URL&gt;</strong>/properties/<strong>&lt;PROPERTY_ID&gt;</strong></li></ul> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; ADD A BUTTON TO THE FORM VIEWS &gt;
+...
+&lt;div class=&quot;oe_button_box&quot;&gt;
+    &lt;button class=&quot;oe_stat_button&quot; type=&quot;...&quot; name=&quot;...&quot;
+            icon=&quot;fa-link&quot; string=&quot;View on Portal&quot;/&gt;
+&lt;/div&gt;
+...
+
+&lt; CREATE THE URL ACTION &gt;
+&lt;record id='&lt;CUSTOM_ID&gt;' model='ir.actions.act_url'&gt;
+    ...
+    &lt;field name='url'&gt;...&lt;/field&gt;
+    ...
+&lt;/record&gt;
+</code></pre></div><h2 id="tenancy-cancellation"><a href="#tenancy-cancellation" class="header-anchor">#</a> Tenancy Cancellation</h2> <p>The agency wishes to have a new button on the <strong>Form</strong> view of the tenancies. The button should read &quot;Cancel&quot;.
+Upon clicking on the button, the tenancy should be cancelled, i.e: its state should change to 'cancelled', however this should only be possible if the tenancy is neither Terminated nor Draft.</p> <p>When a tenancy is cancelled, its tenant_ids field should be emptied.</p> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; ADD A BUTTON ON THE HEADER OF THE FORM VIEW &gt;
+
+&lt;form&gt;
+    &lt;header&gt;
+        &lt;button class=&quot;btn-secondary&quot; type=&quot;...&quot; action=&quot;...&quot;
+            icon=&quot;fa-trash&quot; string=&quot;Cancel&quot;/&gt;
+    &lt;/header&gt;
+    &lt;sheet&gt;
+        ...
+    &lt;/sheet&gt;
+&lt;/form&gt;
+
+</code></pre></div><p>When trying to reset the tenant_ids, use either <strong>Magic Numbers</strong> or <strong>Commands</strong> to clear the field.</p> <h2 id="set-default-tenant-on-tenancy"><a href="#set-default-tenant-on-tenancy" class="header-anchor">#</a> Set Default Tenant on Tenancy</h2> <p>The agency wishes to create a new tenant for every new Tenancy created.
+To achieve this, we can override the <code>def create(self, vals)</code> method on the tenancy model, and use <strong>Magic Numbers</strong> or <strong>Commands</strong> to set the value of the <code>tenant_ids</code> field.</p> <p>The default tenant should have the following values:</p> <ul><li>Name: Default Tenant</li> <li>Email: tenant@agency.test</li></ul> <p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; OVERRIDE THE CREATE METHOD ON THE TENANCY MODEL &gt;
+
+@api...
+def create(self, vals | vals_list)
+    ...
+    self._assign_default_tenant(vals)
+    ...
+
+def _assign_default_tenant(self, vals)
+    ...Use Magic Numbers to assign a default tenant on the tenant_ids field in the vals dict
+
+</code></pre></div><p><strong>Hint 2:</strong>
+This can also be done using the <code>context</code> field on the <strong>Window Action</strong></p> <h2 id="new-report-for-properties"><a href="#new-report-for-properties" class="header-anchor">#</a> New Report for Properties</h2> <p>The agency wants to be able to print a document with the details of any given property(ies).
+To achieve this, create a new pdf report for the Properties model, that simply displays the following information:</p> <div class="language- extra-class"><pre class="language-text"><code>Property Name:
+_______________________________________
+
+Construction Date:                  Rent Price:                 Surface:
+Number of Rooms:                    Parking Spots:              Furnishing:
+
+Address:
+________________________________________
+
+Street:                             City:                       Zip Code:
+State:                              Country:
+
+</code></pre></div><p><strong>Hint:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&lt; DEFINE A NEW REPORT ACTION &gt;
+&lt;record id='&lt;CUSTOM_ID&gt;' model='ir.actions.report'&gt;
+    ...
+    &lt;field name='report_name'&gt;&lt;MODULE_NAME&gt;.property_sheet&lt;/field&gt;
+    &lt;field name='report_file'&gt;&lt;MODULE_NAME&gt;.property_sheet&lt;/field&gt;
+    ...
+&lt;/record&gt;
+
+&lt; DEFINE A NEW QWEB TEMPLATE FOR YOUR REPORT &gt;
+&lt;template id=&quot;property_sheet&quot;&gt;
+    &lt;t t-call=&quot;web.html_container&quot;&gt;
+        &lt;t t-foreach=&quot;docs&quot; t-as=&quot;o&quot;&gt;
+            &lt;t t-call=&quot;web.external_layout&quot;&gt;
+                &lt;div class=&quot;page&quot;&gt;
+
+                    Define the architecture of your report. In this case,
+                    if you want to access data on a record, for example
+                    the name of a property, you can simply do:
+
+                    &lt;h1&gt;
+                        Property Name: &lt;t t-esc='o.name' /&gt;
+                    &lt;/h1&gt;
+
+                    Because 'docs' contains the list of records selected
+                    from a tree/form view, and we loop over docs to get
+                    a reference for every property in the 'o' variable
+
+                &lt;/div&gt;
+            &lt;/t&gt;
+        &lt;/t&gt;
+    &lt;/t&gt;
+&lt;/template&gt;
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/tco/exercises/realty_management.html" class="prev">
+        Realty Management - Part 1
+      </a></span> <span class="next"><a href="/tco/exercises/realty_management_3.html">
+        Realty Management - Part 3
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6dc49ec4.js" defer></script><script src="/assets/js/2.2defd20b.js" defer></script><script src="/assets/js/14.a92bc864.js" defer></script>
+  </body>
+</html>
